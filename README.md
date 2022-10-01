@@ -1,1 +1,1 @@
-# NASA Space Apps Challnege 2022
+# NASA Space Apps Challenge 2022

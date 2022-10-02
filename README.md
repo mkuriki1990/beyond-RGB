@@ -4,7 +4,7 @@
 Beyond_RGB
 
 **Members:** 
-[Armstrong Ngolo](https://arngolo.github.io/homepage)
+[Armstrong Ngolo](https://arngolo.github.io/homepage).
 [Kuriki Murahashi](https://mkuriki.com)
 
 This aplication uses Satellite data and source code from Google Earth Engine (GEE) for analisys.
@@ -15,7 +15,7 @@ For visualization we used (Leaflet)[https://leafletjs.com/] and (Cesium)[https:/
 
 # Results
 
-(beyond_rgb)[https://mkuriki.com/spaceApps2022/beyond-RGB/scripts/beyond_rgb.html]
+(beyond_rgb)[https://mkuriki.com/spaceApps2022/beyond-RGB/scripts/beyond_rgb.html]. Please zoom to Luanda in Africa to visualize a demo result.
 
 **Repositories:**
 (earthengine.googlesource.com/users/arngolo/imagery-on-the-fly)[https://earthengine.googlesource.com/users/arngolo/imagery-on-the-fly]
@@ -26,8 +26,8 @@ Google cloud APIs
 - Google Earth Engine (code editor, NASA's Landasat9 data);
 - Google Cloud Storage (subscription required).
 
-**Notes:**
-For the best of our knowledge, if we want to make map tiles, we have to save the maps into GCS which requires a paid subscription.
+**Notes on maptiles storage:**
+If we want to make map tiles, we have to save the maps into GCS which requires a paid subscription.
 Under GCS, a `bucket`, from where the map tiles will be stored needs to be created and be granted public permissions.
 The map tiles can be used to overlay other web map visualization tools such as Leaflet. You just have to open one of the tiles and copy its URL.
 

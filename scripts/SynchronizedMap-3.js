@@ -2,11 +2,16 @@
 // Wait until content is loaded.
 window.addEventListener('load', function(evt) {
   
-  // Create the map
+  // Create the map with a background image
   var map = L.map('map-3').setView([0, 0], 3);
-  L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-  }).addTo(map);
+  var globalLayer = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+  }).addTo(map),
+  localLayer = L.tileLayer('https://storage.googleapis.com/beyond_rgb/mapTilesForEarthPreview/{z}/{x}/{y}');
+
+  var groupLayer = L.layerGroup([globalLayer, localLayer]);
+
+  groupLayer.addTo(map);
     
   // Send custom event when the map is panned
   map.on('drag', function () {

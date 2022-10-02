@@ -7,7 +7,7 @@ window.addEventListener('load', function(evt) {
   var globalLayer = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
   }).addTo(map),
-  localLayer = L.tileLayer('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/1c4484d440fdf22586936f873efd32da-2e6b70e2cbc1528ca58bc65215e1c46e/tiles/{z}/{x}/{y}');
+  localLayer = L.tileLayer('https://storage.googleapis.com/beyond_rgb/mapTilesForEarthPreview/{z}/{x}/{y}');
 
   var groupLayer = L.layerGroup([globalLayer, localLayer]);
 

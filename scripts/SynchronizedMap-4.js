@@ -19,23 +19,6 @@ window.addEventListener('load', function(evt) {
         //   })
     });
 
-    viewer.canvas.addEventListener("click", function () {
-        //get current cesium camera center coordinate
-        // var camera = viewer.camera;
-        var center = viewer.camera.positionCartographic;
-
-        var lon = Cesium.Math.toDegrees(center.longitude).toFixed(5);
-        var lat = Cesium.Math.toDegrees(center.latitude).toFixed(5);
-
-        var info = { lat: lat, lng: lon, zoom: 3, src: 'map-4' };
-        // Create and dispatch a custom event
-        var event = new CustomEvent('synchronize', { detail: info });
-
-        // See script "SynchronizedMap-2.js"
-        window.dispatchEvent(event);
-        
-      });
-
     // height list for synchronizing Zoom level
     var zoom_height_arr = [
         10000000, // #1
@@ -57,6 +40,33 @@ window.addEventListener('load', function(evt) {
         700,      // #17
         400,      // #18
     ];
+
+    viewer.canvas.addEventListener("click", function () {
+        //get current cesium camera center coordinate
+        // var camera = viewer.camera;
+        var center = viewer.camera.positionCartographic;
+
+        var lon = Cesium.Math.toDegrees(center.longitude).toFixed(5);
+        var lat = Cesium.Math.toDegrees(center.latitude).toFixed(5);
+        var height = center.height; // get camera height
+
+        // check the nearest zoom level from camera height
+        diff = [];
+        var height_index = 0;
+        zoom_height_arr.forEach(function(val, i){
+            diff[i] = Math.abs(height - val);
+            height_index = (diff[height_index] < diff[i]) ? height_index : i;
+        });
+        zoom_level = height_index + 1;
+
+        var info = { lat: lat, lng: lon, zoom: zoom_level, src: 'map-4' };
+        // Create and dispatch a custom event
+        var event = new CustomEvent('synchronize', { detail: info });
+
+        // See script "SynchronizedMap-2.js"
+        window.dispatchEvent(event);
+        
+      });
 
     // Receive the synchronization event from map-1.
     window.addEventListener('synchronize', function (evt) {

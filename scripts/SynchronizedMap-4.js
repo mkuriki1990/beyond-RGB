@@ -36,10 +36,33 @@ window.addEventListener('load', function(evt) {
         
       });
 
+    // height list for synchronizing Zoom level
+    var zoom_height_arr = [
+        10000000, // #1
+        10000000, // #2
+        10000000, // #3
+        5000000,  // #4
+        2800000,  // #5
+        1500000,  // #6
+        800000,   // #7
+        350000,   // #8
+        170000,   // #9
+        90000,    // #10
+        50000,    // #11
+        25000,    // #12
+        12000,    // #13
+        6000,     // #14
+        3000,     // #15
+        1500,     // #16
+        700,      // #17
+        400,      // #18
+    ];
+
     // Receive the synchronization event from map-1.
     window.addEventListener('synchronize', function (evt) {
         var center = evt.detail;
-        var height = 15000000.0;
+        // var height = 15000000.0;
+        var height = zoom_height_arr[center.zoom - 1];
         // FlyTo takes longitude, latitude, and height respectively as input
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(center.lng, center.lat, height),}); // for a large scale view, height needs to be a large number
